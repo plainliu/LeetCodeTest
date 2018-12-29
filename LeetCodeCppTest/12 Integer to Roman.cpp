@@ -79,22 +79,15 @@ public:
         return str;
     }
 };
-//Approach 2:more space for less time
+//Approach 3:more space for less time
 //but running time nearly no change...
 class Solution {
 public:
     string intToRoman(int num) {
-        string str;
         string A[4][10]={"","I","II","III","IV","V","VI","VII","VIII","IX",
                         "","X","XX","XXX","XL","L","LX","LXX","LXXX","XC",
                         "","C","CC","CCC","CD","D","DC","DCC","DCCC","CM",
                         "","M","MM","MMM"};
-        int i=0,index=3;
-        for(int div=1000;div!=0;div=div/10,--index){//1000,100,10,1
-            i=num/div;
-            num%=div;
-            str=str+A[index][i];
-        }
-        return str;
+        return A[3][num/1000]+A[2][num%1000/100]+A[1][num%100/10]+A[0][num%10];
     }
 };

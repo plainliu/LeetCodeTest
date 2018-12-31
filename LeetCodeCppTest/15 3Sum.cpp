@@ -2,8 +2,42 @@
  *2018.12.31
  *Liu
  */
-//Time Limit Exceeded O(n^3)
+//ok,@kun3,O(n^2)
 class Solution {
+public:
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        sort(nums.begin(),nums.end());
+        vector<vector<int>> ans;
+        vector<int> cur(3);
+        int target=0,l=0,r=0,sum23=0;
+        for(int i=0;i<nums.size();++i){//1:nums[i]
+            target=-nums[i];
+            l=i+1;
+            r=nums.size()-1;
+            while(l<r){//2,3:(i+1)..(nums.size()-1)
+                sum23=nums[l]+nums[r];
+                if(sum23<target)
+                    l++;
+                else if(sum23>target)
+                    r--;
+                else{
+					cur[0] = nums[i];
+					cur[1] = nums[l];
+					cur[2] = nums[r];
+					ans.push_back(cur);
+					while (l < r&&nums[l] == cur[1])++l;//same left val
+					while (l < r&&nums[r] == cur[2])--r;//same right val
+				}
+            }
+            while(i+1<nums.size()&&nums[i+1]==nums[i])++i;//same first val
+        }
+        return ans;
+    }
+};
+
+
+//Time Limit Exceeded O(n^3)
+class Solution1 {
 public:
     vector<vector<int>> threeSum(vector<int>& nums) {
         vector<vector<int>> ans;
@@ -31,7 +65,7 @@ public:
 };
 
 //Time Limit Exceeded O(n^2)
-class Solution {
+class Solution2 {
 public:
     vector<vector<int>> threeSum(vector<int>& nums) {
         sort(nums.begin(),nums.end());

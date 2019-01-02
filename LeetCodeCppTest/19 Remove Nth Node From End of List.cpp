@@ -3,6 +3,7 @@
  *Liu
  */
 
+//1:two-pass algorithm
 //scan twice,first time get length of the list,second time Remove (num-N+1)th Node From head of List
 //8 ms,50.40% O(2n)=O(n)
 /**
@@ -34,6 +35,7 @@ public:
     }
 };
 
+//2:one-pass algorithm
 //at first move fst n times,then move fst&pre together
 //8 ms,50.40%,O(n)
 /**

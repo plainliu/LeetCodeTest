@@ -1,0 +1,21 @@
+//
+//2019.01.16
+//Liu
+
+//4 ms,93.80%
+class Solution {
+public:
+    int lengthOfLastWord(string s) {
+        if(s.length()==0)return 0;
+        int l=s.length();
+        while(l&&s[l-1]==' ')--l;
+        int c=0;
+        for(int i=0;i<l;++i){
+            if(s[i]==' ')
+                c=0;
+            else
+                ++c;
+        }
+        return c;
+    }
+};

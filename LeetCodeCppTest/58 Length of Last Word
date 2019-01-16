@@ -2,6 +2,7 @@
 //2019.01.16
 //Liu
 
+//from head
 //4 ms,93.80%
 class Solution {
 public:
@@ -16,6 +17,20 @@ public:
             else
                 ++c;
         }
+        return c;
+    }
+};
+
+
+//from tail
+//4 ms,93.80%
+class Solution {
+public:
+    int lengthOfLastWord(string s) {
+        int l=s.length();
+        int c=0;
+        while(l&&s[l-1]==' ')--l;
+        while(l&&s[l-1]!=' '){++c;--l;}
         return c;
     }
 };

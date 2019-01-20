@@ -3,6 +3,7 @@
  *Liu
  */
 
+//0 ms,100.00%
 //依次放入1~n^2
 class Solution {
 public:

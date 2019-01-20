@@ -1,6 +1,9 @@
+/*
+ *2019.01.19
+ *Liu
+ */
 
-//debuging
-//wrong
+//依次放入1~n^2
 class Solution {
 public:
     vector<vector<int>> generateMatrix(int n) {
@@ -8,18 +11,18 @@ public:
         vector<vector<int>> res(n,cur);
         int s=n*n;
         for(int i=0,j=0,k=1;k<=s;){
-            while(k<=s&&j<n&&res[i][j]==0)//right
+            while(j<n&&res[i][j]==0)//right
                 res[i][j++]=k++;
-            --j;
+            ++i;--j;
             while(i<n&&res[i][j]==0)//down
                 res[i++][j]=k++;
-            --i;
+            --i;--j;
             while(j>=0&&res[i][j]==0)//left
                 res[i][j--]=k++;
-            ++j;
-            while(res[i][j]==0)//up
+            ++j;--i;
+            while(i>=0&&res[i][j]==0)//up
                 res[i--][j]=k++;
-            ++i;
+            ++i;++j;
         }
         return res;
     }
